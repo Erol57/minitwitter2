@@ -1,6 +1,6 @@
 // Get DOM elements
 const form = document.getElementById("post-form");
-const postsContainer = document.getElementById("posts");
+const postsContainer2 = document.getElementById("posts");
 const apipost = "https://wild-cyan-goat-suit.cyclic.app/post/send";
 
 /* 
@@ -10,16 +10,16 @@ and body
 
 const renderPost = ({ text, id }) => {
   // Create div container
-  const postContent = document.createElement("div");
+  const postContent2 = document.createElement("div");
   // Set id as attribute
-  postContent.setAttribute("id", id);
+  postContent2.setAttribute("id", id);
   // Template
-  postContent.innerHTML = `
+  postContent2.innerHTML = `
                         <h5>${text}</h5>
-                        <small>Author: ${id}</small>
+                        <small>${id}</small>
                       `;
   // Prepend to container
-  postsContainer.prepend(postContent);
+  postsContainer2.prepend(postContent2);
 };
 
 /*
@@ -37,7 +37,7 @@ const renderError = (error) => {
                           <strong>Error: ${error}</strong>
                         `;
   // Prepend to container
-  postsContainer.prepend(errorContainer);
+  postsContainer2.prepend(errorContainer);
   setTimeout(() => errorContainer.remove(), 3000);
 };
 
@@ -68,7 +68,7 @@ const handleSubmit = (event) => {
   };
   // Use fetch API
   fetch(apipost, optionsFetch)
-    .then((res) => console.log(res))
+    //.then((res) => console.log(res))
     .then((res) => res.json())
     .then((data) => {
       renderPost(data);
