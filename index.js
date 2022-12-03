@@ -1,6 +1,6 @@
 // Get DOM elements
 const userContainer = document.getElementById("userInfo");
-const postsContainer = document.getElementById("postArea");
+const postsContainer = document.getElementById("postArea2");
 //const api = "https://jsonplaceholder.typicode.com/posts";
 const api = "https://wild-cyan-goat-suit.cyclic.app/user/me";
 let userPostapi = "https://wild-cyan-goat-suit.cyclic.app/post/postbyid"
@@ -85,7 +85,7 @@ fetch(userPostapi)
   //######################################################################
   // Get DOM elements
 const form = document.getElementById("post-form");
-const postsContainer2 = document.getElementById("posts");
+const postsContainer2 = document.getElementById("postArea2");
 const apipost = "https://wild-cyan-goat-suit.cyclic.app/post/send";
 
 /* 
