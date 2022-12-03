@@ -69,7 +69,7 @@ const handleSubmit = (event) => {
   // Use fetch API
   fetch(apipost, optionsFetch)
     .then((res) => console.log(res))
-    /*.then((res) => res.json())
+    .then((res) => res.json())
     .then((data) => {
       renderPost(data);
       event.target.reset();
@@ -77,9 +77,7 @@ const handleSubmit = (event) => {
     .catch((err) => {
       renderError(err);
       event.target.reset();
-    });*/
+    });
 };
-
-
 
 form.addEventListener("submit", handleSubmit);
