@@ -30,4 +30,8 @@ body {
     display: inline-block;
     border-radius: 3px;
   }
+  #postArea, #userInfo {
+    border: 1px black solid;
+    color:green;
+  }
   

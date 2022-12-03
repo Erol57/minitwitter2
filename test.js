@@ -53,23 +53,21 @@ const handleSubmit = (event) => {
   const {
     target: {
       elements: {
-        text: text,
-        id: id
+        text: { value: text },
+        id: { value: id }
       }
     }
   } = event;
-  console.log(text.value + " " + id.value);
   const optionsFetch = {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ text:text.value, id:id.value })
+    body: JSON.stringify({ text, id})
   };
   // Use fetch API
   fetch(apipost, optionsFetch)
-    .then((res) => console.log(res))
-    /*.then((res) => res.json())
+    .then((res) => res.json())
     .then((data) => {
       renderPost(data);
       event.target.reset();
@@ -77,9 +75,7 @@ const handleSubmit = (event) => {
     .catch((err) => {
       renderError(err);
       event.target.reset();
-    });*/
+    });
 };
-
-
 
 form.addEventListener("submit", handleSubmit);

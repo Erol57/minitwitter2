@@ -1,43 +1,34 @@
 // Get DOM elements
-const postsContainer = document.getElementById("posts");
+const userContainer = document.getElementById("userInfo");
+const postsContainer = document.getElementById("postArea");
 //const api = "https://jsonplaceholder.typicode.com/posts";
-const api = "https://wild-cyan-goat-suit.cyclic.app/user/list";
+const api = "https://wild-cyan-goat-suit.cyclic.app/user/me";
+const userPostapi = "https://wild-cyan-goat-suit.cyclic.app/post/list"
 
-/* 
-Render post - This function takes an object with an id, userID, title 
-and body
-*/
-
-/*
-const renderPost = ({ id, userId, title, body }) => {
-  // Create div container
-  const postContent = document.createElement("div");
-  // Set id as attribute
-  postContent.setAttribute("id", id);
-  // Template
-  postContent.innerHTML = `
-                        <h5>${title}</h5>
-                        <p>${body}</p>
-                        <small>Author: ${userId}</small>
-                      `;
-  // Prepend to container
-  postsContainer.prepend(postContent);
-};
-*/
-
-const renderPost = ({ name, id }) => {
-    // Create div container
-    const postContent = document.createElement("div");
-    //Set id as attribute
-    postContent.setAttribute("id", id);
-    // Template
-    postContent.innerHTML = `
+const renderUser = ({ name, id }) => {
+    userContainer.innerHTML = `
+                          <legend>Logged In User</legend>
                           <h5>${name}</h5>
                           <p>${id}</p>`;
     // Prepend to container
-    postsContainer.prepend(postContent);
   };
-
+  
+const renderPost = ({ _id, id, text, date }) => {
+  // Create div container
+  const postContent = document.createElement("div");
+  // Set id as attribute
+  postContent.setAttribute("id", _id);
+  postContent.setAttribute('class', 'row');
+  // Template
+  postContent.innerHTML = `
+                        <p>${text}</p>
+                        <small>Author: ${id}</small></br>
+                        <small>Date Posted: ${date}</small></br>
+                        <small>Message ID: ${_id}</small>
+                      `;
+  // Prepend to container
+  postsContainer.prepend(postContent);
+}
 /*
 Render error - This function takes an error object and displays it. 
 It also sets a timeout to remove it from the DOM  
@@ -53,14 +44,24 @@ const renderError = (error) => {
                           <strong>Error: ${error}</strong>
                         `;
   // Prepend to container
-  postsContainer.prepend(errorContainer);
+  postsContainer.appendChild(errorContainer);
   setTimeout(() => errorContainer.remove(), 3000);
 };
 
+
 //postsContainer.innerHTML = "Loading...";
+
+
+
+const currentUser = fetch(api)
 fetch(api)
   .then((res) => res.json())
-  .then((data) => data.forEach((post) => renderPost(post)))
-  .catch((err) => {
-    renderError(err);
-  });
+  .then((data) => renderUser(data))
+  
+fetch(userPostapi)
+  .then((res) => res.json())
+  .then((data) => data.forEach((post) => {
+    if(post.id === currentUser.id){
+      renderPost(post);
+    }
+  }));
