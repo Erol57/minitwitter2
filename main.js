@@ -43,12 +43,20 @@ function getMessage() {
 }
 */
 
-let 
+console.log("hallo");
+postMessage();
+
 
 function getMessageFromLocalStorage(){
 
 }
 
 function postMessage() {
-    //save msh to localstorage
+
+//newmsg_id =     
+//newmsg_text = prompt("Please enter your msg", "");
+
+msg = [{"id": "SbBGk", "text": "...."},{ "id": "SbBGfez","text": "...."}];
+console.log(msg);
+localStorage.setItem('msgID', JSON.stringify(msg));
 }
