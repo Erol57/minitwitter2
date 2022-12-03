@@ -8,7 +8,7 @@ Render post - This function takes an object with an id, userID, title
 and body
 */
 
-const renderPost = ({ text, id }) => {
+const renderPost2 = ({ text, id }) => {
   // Create div container
   const postContent2 = document.createElement("div");
   // Set id as attribute
@@ -27,18 +27,18 @@ Render error - This function takes an error object and displays it.
 It also sets a timeout to remove it from the DOM  
 */
 
-const renderError = (error) => {
+const renderError2 = (error) => {
   // Create div for error
-  const errorContainer = document.createElement("div");
+  const errorContainer2 = document.createElement("div");
   // Setting styles via cssText property
-  errorContainer.style.cssText = "color: white; background-color: red";
+  errorContainer2.style.cssText = "color: white; background-color: red";
   // Template
-  errorContainer.innerHTML = `
+  errorContainer2.innerHTML = `
                           <strong>Error: ${error}</strong>
                         `;
   // Prepend to container
-  postsContainer2.prepend(errorContainer);
-  setTimeout(() => errorContainer.remove(), 3000);
+  postsContainer2.prepend(errorContainer2);
+  setTimeout(() => errorContainer2.remove(), 3000);
 };
 
 /* 
@@ -71,11 +71,11 @@ const handleSubmit = (event) => {
     //.then((res) => console.log(res))
     .then((res) => res.json())
     .then((data) => {
-      renderPost(data);
+      renderPost2(data);
       event.target.reset();
     })
     .catch((err) => {
-      renderError(err);
+      renderError2(err);
       event.target.reset();
     });
 };
