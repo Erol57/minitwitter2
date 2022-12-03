@@ -1,16 +1,25 @@
 // Get DOM elements
 const userContainer = document.getElementById("userInfo");
-const postsContainer = document.getElementById("postArea");
+const postsContainer = document.getElementById("postArea2");
 //const api = "https://jsonplaceholder.typicode.com/posts";
 const api = "https://wild-cyan-goat-suit.cyclic.app/user/me";
-const userPostapi = "https://wild-cyan-goat-suit.cyclic.app/post/list"
+let userPostapi = "https://wild-cyan-goat-suit.cyclic.app/post/postbyid"
+
 
 const renderUser = ({ name, id }) => {
-    userContainer.innerHTML = `
+  userPostapi += `/${id}`;
+  console.log(userPostapi);
+  
+  userContainer.innerHTML = `
                           <legend>Logged In User</legend>
                           <h5>${name}</h5>
-                          <p id="userid">${id}</p>`;
+                          <p id='userId'>${id}</p>`;
     // Prepend to container
+  fetch(userPostapi)
+    .then((res) => res.json())
+    .then((data) => data.forEach((post) => {
+      renderPost(post);
+    }));
   };
   
 const renderPost = ({ _id, id, text, date }) => {
@@ -53,7 +62,7 @@ const renderError = (error) => {
 
 
 
-const currentUser = fetch(api)
+
 fetch(api)
   .then((res) => res.json())
   .then((data) => renderUser(data))
@@ -80,7 +89,7 @@ fetch(userPostapi)
   
   // Get DOM elements
 const form = document.getElementById("post-form");
-const postsContainer2 = document.getElementById("posts");
+const postsContainer2 = document.getElementById("postArea2");
 const apipost = "https://wild-cyan-goat-suit.cyclic.app/post/send";
 
 /* 

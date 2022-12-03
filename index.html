@@ -16,7 +16,23 @@
         </br>
         <div class="row">
           <div class="col-3" id='userInfo'><legend>Logged User</legend></div>
-          <div class="col-9" id="postArea"></div>
+          <div class="col-9" id="postArea">
+            <div class ='row'>
+              <fieldset>
+                <legend>Create a new post</legend>
+                <form id="post-form">
+                  <input type="hidden" name="id" value="2" />
+                  <div>
+                    <textarea name="text" rows="4" cols="50"></textarea>
+                  </div>
+                  <div>
+                    <button type="submit">Submit</button>
+                  </div>
+                </form>
+              </fieldset>
+            </div>
+            <div class = 'row' id="postArea2"></div>
+          </div>
         </div>
         </fieldset>
     </div>
