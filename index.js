@@ -9,7 +9,7 @@ const renderUser = ({ name, id }) => {
     userContainer.innerHTML = `
                           <legend>Logged In User</legend>
                           <h5>${name}</h5>
-                          <p>${id}</p>`;
+                          <p id="userid">${id}</p>`;
     // Prepend to container
   };
   
@@ -74,6 +74,10 @@ fetch(userPostapi)
   //######################################################################
   //Start: POSTING MSG
   //######################################################################
+
+  
+
+  
   // Get DOM elements
 const form = document.getElementById("post-form");
 const postsContainer2 = document.getElementById("posts");
@@ -84,11 +88,12 @@ Render post - This function takes an object with an id, userID, title
 and body
 */
 
-const renderPost2 = ({ text, id }) => {
+const renderPost2 = ({ text, actualuser }) => {
   // Create div container
   const postContent2 = document.createElement("div");
   // Set id as attribute
-  postContent2.setAttribute("id", id);
+  postContent2.setAttribute("id", document.getElementById("userid").value);
+  //const actualuser = document.getElementById("userid").value;
   // Template
   postContent2.innerHTML = "posted";
 
@@ -136,15 +141,20 @@ const handleSubmit = (event) => {
       }
     }
   } = event;
-  console.log(text.value + " " + id.value);
+  //console.log(text.value + " " + id.value);
   const optionsFetch = {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ text:text.value, id:id.value })
+    body: JSON.stringify({ text:text.value, id:currentUser })
   };
   // Use fetch API
+
+  console.log(document.getElementById("userid").text + " " + "get elenebt");
+  console.log(currentUser.id);
+
+  console.log({ text:text.value, id:id.value });
   fetch(apipost, optionsFetch)
     //.then((res) => console.log(res))
     .then((res) => res.json())
