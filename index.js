@@ -4,11 +4,11 @@ const postsContainer = document.getElementById("postArea2");
 //const api = "https://jsonplaceholder.typicode.com/posts";
 const api = "https://wild-cyan-goat-suit.cyclic.app/user/me";
 let userPostapi = "https://wild-cyan-goat-suit.cyclic.app/post/postbyid"
-
+let currentUserId = '';
 
 const renderUser = ({ name, id }) => {
   userPostapi += `/${id}`;
-  console.log(userPostapi);
+  currentUserId =`${id}`;
   
   userContainer.innerHTML = `
                           <legend>Logged In User</legend>
@@ -97,19 +97,18 @@ Render post - This function takes an object with an id, userID, title
 and body
 */
 
-const renderPost2 = ({ text, actualuser }) => {
+const renderPost2 = ({ text, id }) => {
   // Create div container
   const postContent2 = document.createElement("div");
   // Set id as attribute
-  postContent2.setAttribute("id", document.getElementById("userid").value);
+  postContent2.setAttribute('class',"row");
   //const actualuser = document.getElementById("userid").value;
   // Template
-  postContent2.innerHTML = "posted";
-
-                      /*postContent2.innerHTML = `
+  postContent2.innerHTML = 
+                      postContent2.innerHTML = `
                       <h5>${text}</h5>
-                      <small>${id}</small>
-                    `;*/                    
+                      <small>Author: ${id}</small>
+                    `;                    
   // Prepend to container
   postsContainer2.prepend(postContent2);
 };
@@ -150,20 +149,23 @@ const handleSubmit = (event) => {
       }
     }
   } = event;
+  id.value = currentUserId;
   //console.log(text.value + " " + id.value);
   const optionsFetch = {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ text:text.value, id:currentUser })
+    body: JSON.stringify({ text:text.value, id:id.value })
   };
   // Use fetch API
 
-  console.log(document.getElementById("userid").text + " " + "get elenebt");
-  console.log(currentUser.id);
 
   console.log({ text:text.value, id:id.value });
+  renderPost2({ text:text.value, id:id.value });
+  event.target.reset();
+}
+  /*
   fetch(apipost, optionsFetch)
     //.then((res) => console.log(res))
     .then((res) => res.json())
@@ -176,7 +178,7 @@ const handleSubmit = (event) => {
       event.target.reset();
     });
 };
-
+*/
 form.addEventListener("submit", handleSubmit);
 
   //######################################################################
