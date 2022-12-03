@@ -1,6 +1,10 @@
 
 .navbar {
-    background-color: rgb(100,188,247);
+    background-color: #296aa7;
+    font-weight: bolder;
+}
+.navbar-brand {
+    color: rgb(255, 255, 255) !important;
 }
 .card-body {
     background-color: rgba(177, 203, 221, 0.096);
@@ -8,4 +12,10 @@
 .form {
     display: flex;
     justify-content: center;
+}
+.footer {
+    position: absolute;
+    bottom: 0; 
+    width: 100%;
+
 }
