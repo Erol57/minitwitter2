@@ -54,7 +54,7 @@ function getMessageFromLocalStorage(){
 function postMessage() {
 
 //newmsg_id =     
-//newmsg_text = prompt("Please enter your msg", "");
+newmsg_text = prompt("Please enter your msg", "");
 
 msg = [{"id": "SbBGk", "text": "...."},{ "id": "SbBGfez","text": "...."}];
 console.log(msg);
