@@ -13,41 +13,42 @@
 <body>
     <nav class="navbar">
         <div class="container-fluid">
-          <a class="navbar-brand">Mini Twitter</a>
+          <a class="navbar-brand">Tweeter</a>
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Search Posts" aria-label="Search">
             <button class="btn btn-dark" type="submit">Search</button>
           </form>
         </div>
       </nav>
-
-      <div class="container">
-        <div class="form">
-                  <label for="postbox">Make a Post</label>
-                  <input type="text" class="form-control" id="postbox"  placeholder="Start Typing">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-      </div>
-    </div>
-    <br>
-      
 <div class="container-fluid">
+  <div class="row">
+    <div class="w-50 p-3 mx-auto">
+        <div class="form">
+        <input type="text" class="form-control" id="postbox"  placeholder="Start Typing">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+  </div>
+
     <div class="row">
         <div class="col-2">
-            Column 
-            User Profile
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <h5 class="my-3">Test User</h5>
+              <p class="text-muted mb-1">Sample Text</p>
+              <p class="text-muted mb-4">Sample Test</p>
+            </div> 
+        </div>
         </div>
 
-        <div class="col-10">
+        <div class="col-9">
             <div class="card">
                 <div class="card-body">
                   Posts
                 </div>
               </div>
-                </div>
         </div>
-    </div>
+      </div>
 </div>
 
     

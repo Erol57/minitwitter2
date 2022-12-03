@@ -1,8 +1,11 @@
+
 .navbar {
     background-color: rgb(100,188,247);
 }
-.col-2 {
-    background-color: rgb(100,188,247);
+.card-body {
+    background-color: rgba(177, 203, 221, 0.096);
 }
-
-
+.form {
+    display: flex;
+    justify-content: center;
+}
